@@ -1,0 +1,25 @@
+<div id="register" class="container">
+  <form  action="mysuperscript.php" autocomplete="on">
+    <h1> Sign up </h1>
+    <p>
+      <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+      <input [(ngModel)]="username" id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="Username" />
+    </p>
+    <p>
+      <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
+      <input [(ngModel)]="email" id="emailsignup" name="emailsignup" required="required" type="email" placeholder="Email"/>
+    </p>
+    <p>
+      <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+      <input [(ngModel)]="password" id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="Password"/>
+    </p>
+    <p>
+      <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Confirm your password </label>
+      <input [(ngModel)]="pswconfirm" id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="Confirm password"/>
+    </p>
+    <p class="signin button">
+      <input type="submit" value="Sign up"/>
+    </p>
+  </form>
+</div>
+<router-outlet></router-outlet>

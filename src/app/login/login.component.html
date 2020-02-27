@@ -1,0 +1,23 @@
+
+<div class="container" id="container_demo" >
+  <a class="hiddenanchor" id="toregister"></a>
+  <a class="hiddenanchor" id="tologin"></a>
+  <div id="wrapper">
+    <div id="login" class="animate form">
+      <form  action="mysuperscript.php" autocomplete="on">
+        <h1>Log in</h1>
+        <p>
+          <label for="username" class="uname" data-icon="u" >Enter your Email</label>
+          <input [(ngModel)]="email" class="LoginEmail" id="username" name="username" required="required" type="text" placeholder="Email"/>
+        </p>
+        <p>
+          <label class="labelpsw" for="password" class="youpasswd" data-icon="p">Enter your Password</label>
+          <input [(ngModel)]="password2" class="loginpassword" id="password" name="password" required="required" type="password" placeholder="Password" />
+        </p>
+        <p class="login button">
+          <input type="submit" value="Login" />
+        </p>
+      </form>
+    </div>
+  </div>
+
