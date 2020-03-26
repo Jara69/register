@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./logedin.component.scss']
 })
 export class LogedinComponent implements OnInit {
-  private url3 = 'http://85.160.64.233:3000/session/logout';
+  public url3 = 'http://85.160.64.233:3000/session/logout';
 
   runLogOut() {
     const headers = new HttpHeaders().set('User-Token', Key.access);

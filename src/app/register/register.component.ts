@@ -9,23 +9,23 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  private url = ' http://85.160.64.233:3000/session/register';
-  private username = '';
-  private password = '';
-  private email = '';
-  private pswconfirm = '';
-  private error = false;
+
+  public username = '';
+  public password = '';
+  public email = '';
+  public pswconfirm = '';
+  public error = false;
+  public registerUrl = ' http://85.160.64.233:3000/session/register';
 
 
 
   registerClick() {
     if (this.password === this.pswconfirm) {
       this.http
-        .post(this.url, {username: this.username, email: this.email, password: this.password, pswconfirm: this.pswconfirm})
+        .post(this.registerUrl, {username: this.username, email: this.email, password: this.password, pswconfirm: this.pswconfirm})
         .subscribe(
           (data: any) => {
             this.router.navigate(['/home']);
-
           }, (error) => {
             this.error = true;
           }

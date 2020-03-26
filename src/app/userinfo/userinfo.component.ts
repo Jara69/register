@@ -10,11 +10,11 @@ import Key from '../Token';
   styleUrls: ['./userinfo.component.scss']
 })
 export class UserinfoComponent implements OnInit {
-  private username = '';
-  private email = '';
-  private id = '';
-  private url = 'http://85.160.64.233:3000/user';
-  private url2 = 'http://85.160.64.233:3000/session/logout';
+  public username = '';
+ public email = '';
+  public id = '';
+  public url = 'http://85.160.64.233:3000/user';
+  public url2 = 'http://85.160.64.233:3000/session/logout';
 
   runLogOut() {
     const headers = new HttpHeaders().set('User-Token', Key.access);

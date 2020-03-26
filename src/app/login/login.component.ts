@@ -11,10 +11,10 @@ import Key from '../Token';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private url = ' http://85.160.64.233:3000/session/login';
-  private email = '';
-  private password2 = '';
-  private error = false;
+  public url = ' http://85.160.64.233:3000/session/login';
+  public email = '';
+  public password2 = '';
+  public error = false;
 
   loginClick() {
     this.http
@@ -23,9 +23,7 @@ export class LoginComponent implements OnInit {
         (data: any) => {
           Key.access = data.access_token;
           console.log(Key.access);
-
-          this.router.navigate(['/loggedin']);
-
+          this.router.navigate(['/logedin']);
         }, (error) => {
           this.error = true;
         }
