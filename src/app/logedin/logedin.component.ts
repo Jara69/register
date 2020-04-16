@@ -3,6 +3,8 @@ import {HttpHeaders} from '@angular/common/http';
 import Key from '../Token';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../services/authentication.service';
+
 
 @Component({
   selector: 'app-logedin',
@@ -12,22 +14,32 @@ import {Router} from '@angular/router';
 export class LogedinComponent implements OnInit {
   public url3 = 'http://85.160.64.233:3000/session/logout';
 
+
+  constructor(private http: HttpClient, private router: Router, private http2: HttpClient, private authentication: AuthenticationService) { }
+
   runLogOut() {
     const headers = new HttpHeaders().set('User-Token', Key.access);
 
-    this.http2
-      .delete(this.url3, {headers})
+    this.authentication
+      .smazToken()
       .subscribe(
         (data: any) => {
-          Key.access = '';
+          AuthenticationService.token.access_token = "";
           console.log(Key.access);
         }, (error) => {
         }
       );
   }
-  constructor(private http: HttpClient, private router: Router, private http2: HttpClient) { }
-
   ngOnInit() {
+    if (localStorage.getItem('access-token')) {
+      console.log('Hello token');
+      AuthenticationService.token.access_token = (localStorage.getItem('access-token'));
+      this.router.navigate(['/loggedin']);
+
+    } else {
+      console.log('Cant see you token');
+
+    }
   }
 
 }

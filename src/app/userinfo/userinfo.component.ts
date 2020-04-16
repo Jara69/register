@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import Key from '../Token';
+import {AuthenticationService} from '../services/authentication.service';
+import {UserService} from '../services/user.service';
+import {UserModel} from '../models/User.model';
+import {Authentication} from '../models/Authentication';
+import {GetPagee} from '../getPagee';
 
 
 @Component({
@@ -11,42 +16,51 @@ import Key from '../Token';
 })
 export class UserinfoComponent implements OnInit {
   public username = '';
- public email = '';
-  public id = '';
+  public users = [];
+  public id = GetPagee;
+  public email = '';
   public url = 'http://85.160.64.233:3000/user';
   public url2 = 'http://85.160.64.233:3000/session/logout';
+  public temparray = [];
+  public 'data' ;
+  // tslint:disable-next-line:variable-name
+  private page_count: number;
 
-  runLogOut() {
-    const headers = new HttpHeaders().set('User-Token', Key.access);
 
-    this.http2
-      .delete(this.url2, {headers})
-      .subscribe(
-        (data: any) => {
-          Key.access = '';
-          console.log(Key.access);
-        }, (error) => {
-        }
-      );
+  constructor(private http: HttpClient, private router: Router, private http2: HttpClient, private user: UserService, private authentication: AuthenticationService) {
+
+
+    this.user.getUzivatelID().subscribe(
+      (data: GetPagee) => {
+        console.log(data);
+        this.users = data['users'];
+        console.log(this.users);
+      }, (error) => {
+      }
+    );
   }
 
-  constructor(private http: HttpClient, private router: Router, private http2: HttpClient) {
-    const headers = new HttpHeaders().set('User-Token', Key.access);
-
-    this.http
-      .get(this.url, {headers})
-      .subscribe(
-        (data: any) => {
-          Key.access = data.access_token;
-          this.id = data.id;
-          this.email = data.email;
-          this.username = data.username;
-        }, (error) => {
-        }
-      );
-
-
+  clickProfile(id: number) {
+    this.router.navigate(['/kmnts'], {queryParams: {id}});
   }
+
+  get pageCount(): IterableIterator<number> {
+    return new Array(this.page_count).keys();
+  }
+
+  loadPage(page: number) {
+    this.user.getPage(page).subscribe(
+      (data: UserModel) => {
+        this.users = data['users'];
+        this.page_count = data.page_count + 1;
+        console.log(this.users);
+      }, (error) => {
+
+      }
+    );
+    console.log(page);
+  }
+
   ngOnInit() {
   }
 

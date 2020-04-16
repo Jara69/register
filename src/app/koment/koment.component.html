@@ -1,0 +1,34 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="twitter">
+  <img height="350px" width="425px" src="https://i.pinimg.com/originals/82/e4/3c/82e43cf658476c8a5a3d88dfa4e0b83d.jpg">
+</div>
+
+<div class="container">
+  <div class="post-comments">
+
+    <form>
+      <div class="form-group">
+        <label>Your Comment</label>
+        <textarea name="comment" [(ngModel)]="text" class="form-control" rows="3"></textarea>
+        <body [(ngModel)]="body"></body>
+      </div>
+      <button type="submit" (click)="sendComment()" class="btn btn-default">Send</button>
+    </form>
+  </div>
+  <h2>{{username}}
+  </h2>
+  <p>{{this.user}}{{body}}</p>
+
+  <div *ngFor="let username of diskuse">
+    <h4 ><strong>{{username.author_id.username}}</strong></h4>
+    <p >{{username.body}}</p>
+  </div>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination pg-blue">
+      <li class="page-item" *ngFor="let i of pageCount"><a class="page-link" (click)="loadPage(i)">{{i + 1}}</a></li>
+    </ul>
+  </nav>

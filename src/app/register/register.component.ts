@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from '../services/authentication.service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
@@ -8,24 +10,23 @@ import {Router} from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
-
   public username = '';
   public password = '';
   public email = '';
-  public pswconfirm = '';
+  public pswConfirm = '';
   public error = false;
-  public registerUrl = ' http://85.160.64.233:3000/session/register';
+  public url = 'http://85.160.64.233:3000/session/register';
 
+  constructor(private http: HttpClient, private router: Router,  private authentication: AuthenticationService) {}
 
 
   registerClick() {
-    if (this.password === this.pswconfirm) {
-      this.http
-        .post(this.registerUrl, {username: this.username, email: this.email, password: this.password, pswconfirm: this.pswconfirm})
+    console.log('More ja funguju');
+    if (this.password === this.pswConfirm) {
+      this.authentication.getRegister(this.username, this.email, this.password, this.pswConfirm)
         .subscribe(
           (data: any) => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['login']);
           }, (error) => {
             this.error = true;
           }
@@ -34,10 +35,6 @@ export class RegisterComponent implements OnInit {
       this.error = true;
     }
   }
-  constructor(private http: HttpClient, private router: Router) {
-
-  }
-
   ngOnInit() {
   }
 

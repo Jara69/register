@@ -9,6 +9,8 @@ import { LogedinComponent } from './logedin/logedin.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {UserinfoComponent} from './userinfo/userinfo.component';
+import { KomentComponent } from './koment/koment.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -18,14 +20,16 @@ import {UserinfoComponent} from './userinfo/userinfo.component';
     LoginComponent,
     RegisterComponent,
     LogedinComponent,
-    UserinfoComponent
+    UserinfoComponent,
+    KomentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

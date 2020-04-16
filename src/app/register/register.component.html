@@ -15,11 +15,11 @@
     </p>
     <p>
       <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Confirm your password </label>
-      <input [(ngModel)]="pswconfirm" id="passwordsignup_confirm" name="pswconfirm" required="required" type="password" placeholder="Confirm password"/>
+      <input [(ngModel)]="pswConfirm" id="passwordsignup_confirm" name="pswConfirm" required="required" type="password" placeholder="Confirm password"/>
     </p>
-    <p class="signin button">
-      <input type="submit" (click)="registerClick()" value="Sign up"/>
-    </p>
+    <div>
+        <button type = "submit" (click)= "registerClick()">Sign up</button>
+    </div>
   </form>
 </div>
 <router-outlet></router-outlet>

@@ -7,16 +7,16 @@
       <form  action="mysuperscript.php" autocomplete="on">
         <h1>Log in</h1>
         <p>
-          <label for="username" class="uname" data-icon="u" >Enter your Email</label>
-          <input [(ngModel)]="email" class="LoginEmail" id="username" name="username" required="required" type="text" placeholder="Email"/>
+          <label for="email" class="email" data-icon="u" >Enter your Email</label>
+          <input [(ngModel)]="email" class="LoginEmail" id="email" name="email" required="required" type="text" placeholder="Email"/>
         </p>
         <p>
           <label class="labelpsw" for="password" class="youpasswd" data-icon="p">Enter your Password</label>
-          <input [(ngModel)]="password2" class="loginpassword" id="password" name="password" required="required" type="password" placeholder="Password" />
+          <input [(ngModel)]="password" class="loginpassword" id="password" name="password" required="required" type="password" placeholder="Password" />
         </p>
-        <p class="login button">
-          <input type="submit" value="Login" />
-        </p>
+        <div class="login button">
+          <button type="submit" (click)= "loginClick()">Login</button>
+        </div>
       </form>
     </div>
   </div>
